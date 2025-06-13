@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sai Charan Pasupuleti | Cloud & IoT Engineer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fa;
+      color: #1a202c;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+      padding: 32px;
+      position: relative;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .profile-pic {
+      border-radius: 50%;
+      margin-bottom: 12px;
+      width: 110px;
+      border: 4px solid #00cfc8;
+      box-shadow: 0 4px 20px rgba(36,55,99,0.10);
+    }
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin: 0;
+      color: #2563eb;
+    }
+    .headline {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 8px;
+      letter-spacing: 0.4px;
+    }
+    .summary {
+      font-size: 1.08rem;
+      margin: 18px auto 12px;
+      color: #333;
+      max-width: 700px;
+    }
+
+    /* Top nav buttons */
+    .nav-buttons {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 8px 16px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .nav-buttons a:hover {
+      background: #1e4bb8;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.34rem;
+      font-weight: 700;
+      color: #2b396a;
+      margin-top: 36px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #eaeaea;
+      padding-bottom: 6px;
+      gap: 12px;
+    }
+    .section-title i {
+      font-size: 1.3em;
+      color: #00cfc8;
+    }
+
+    .skills-list, .certs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .skills-list li, .certs-list li {
+      background: #eef2f7;
+      border-radius: 7px;
+      padding: 7px 15px;
+      font-size: 0.97rem;
+      font-weight: 500;
+      border: 1px solid #e0e7ef;
+      transition: box-shadow .2s;
+    }
+    .skills-list li:hover, .certs-list li:hover {
+      box-shadow: 0 4px 16px #00cfc850;
+    }
+
+    .exp-card, .project-card, .edu-card {
+      background: #f8fafc;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 1.1rem 1.5rem;
+      margin-bottom: 18px;
+      border-left: 5px solid #00cfc8;
+    }
+    .exp-title, .project-title, .edu-title {
+      font-weight: 700;
+      color: #2563eb;
+      font-size: 1.09rem;
+      margin-bottom: 2px;
+    }
+    .exp-org, .project-org, .edu-meta {
+      font-size: 0.97rem;
+      color: #4b5563;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .exp-desc, .project-desc, .edu-desc {
+      margin-top: 4px;
+      color: #444;
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    /* Contact button */
+    .contact-btn {
+      position: fixed;
+      bottom: 26px;
+      right: 32px;
+      background: linear-gradient(90deg, #00cfc8, #2563eb);
+      color: #fff;
+      padding: 16px 34px;
+      border: none;
+      border-radius: 2.2rem;
+      font-size: 1.22rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 16px #00cfc850;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background .22s;
+    }
+    .contact-btn:hover {
+      background: linear-gradient(90deg, #2563eb, #00cfc8);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(60,70,90,0.3);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 7% auto;
+      padding: 40px 32px;
+      border-radius: 18px;
+      max-width: 350px;
+      box-shadow: 0 6px 38px #2563eb40;
+      text-align: center;
+    }
+    .modal-content h3 {
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+    .modal-content a {
+      display: block;
+      margin: 14px 0;
+      color: #00cfc8;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.12rem;
+      transition: color .16s;
+    }
+    .modal-content a:hover {
+      color: #2563eb;
+    }
+    .close {
+      color: #b0b0b0;
+      float: right;
+      font-size: 1.8rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 16px; }
+      .profile-pic {width: 82px;}
+      .headline {font-size: 0.93rem;}
+      .contact-btn {right: 6px; bottom: 10px; padding: 10px 22px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Contact Button -->
+  <button class="contact-btn" onclick="document.getElementById('contactModal').style.display='block';">
+    &#128233; Contact
+  </button>
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal" onclick="if(event.target==this) this.style.display='none';">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('contactModal').style.display='none';">&times;</span>
+      <h3>Contact Me</h3>
+      <a href="mailto:saicharanpasupuleti8@gmail.com">✉️ Email</a>
+      <a href="tel:+12168081152">📞 Phone</a>
+      <a href="https://github.com/psaicharan921" target="_blank">💻 GitHub</a>
+      <a href="https://linkedin.com/in/saicharan" target="_blank">🔗 LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Top Navigation -->
+    <div class="nav-buttons">
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certifications</a>
+      <a href="#education">Education</a>
+    </div>
+
+    <header>
+      <img src="profile.jpg" alt="Sai Charan Pasupuleti" class="profile-pic">
+      <h1>Sai Charan Pasupuleti</h1>
+      <div class="headline">Cloud, Automation & Robotics Engineer</div>
+      <div class="summary">
+        Cloud Infrastructure & IoT Engineer with nearly 4 years of experience designing secure, scalable, cloud-native architectures. Expert in AWS/Azure, DevOps automation, secure IoT-cloud integration, and distributed systems. Proven impact in cross-functional teams, agile delivery, and security-first infrastructure.
+      </div>
+    </header>
+
+    <section id="skills">
+      <div class="section-title"><i>🛠️</i> Skills</div>
+      <ul class="skills-list">
+        <li>AWS (EC2, S3, Lambda, CloudFormation, IAM, RDS, DynamoDB)</li>
+        <li>Azure (VMs, VNets, Security Center)</li>
+        <li>Terraform, AWS CLI, Azure CLI</li>
+        <li>GitHub Actions, CodePipeline, Docker, Kubernetes</li>
+        <li>Python, Flask APIs, Bash</li>
+        <li>Security: IAM, MFA, GuardDuty, WAF</li>
+        <li>SIEM, Encryption, Compliance</li>
+        <li>Networking: VPC, Load Balancers, VPN, Firewalls</li>
+        <li>CloudWatch, Monitoring, Logging</li>
+        <li>IoT: Raspberry Pi, MQTT, Modbus, IFTTT</li>
+        <li>Jira, Runbooks, Technical Documentation</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <div class="section-title"><i>💼</i> Professional Experience</div>
+      <div class="exp-card">
+        <div class="exp-title">Cloud Security Engineer</div>
+        <div class="exp-org">Hyster-Yale Group, USA | Aug 2023 – Present</div>
+        <div class="exp-desc">
+          Managed secure AWS/Azure cloud infrastructure with Terraform and IaC. Led migrations, optimized network segmentation, enforced IAM/MFA, automated compliance (AWS Config & Security Hub), containerized workloads (Docker/K8s), centralized logging, and ran security workshops.
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-title">Cloud Infrastructure Engineer</div>
+        <div class="exp-org">Rackspace Technology, India | Feb 2021 – May 2022</div>
+        <div class="exp-desc">
+          Automated AWS provisioning (Terraform, CLI), architected secure VPCs & load balancing, centralized log aggregation (CloudWatch), enforced IAM/MFA, and scripted backup/compliance routines.
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-title">IoT Engineer Intern</div>
+        <div class="exp-org">Expert Hub Industry, India | Jun 2019 – Dec 2019</div>
+        <div class="exp-desc">
+          Enhanced device automation with Raspberry Pi (Flask APIs, IFTTT), built remote monitoring solutions, and developed Python/Bash scripts for sensor control and data reliability.
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title"><i>🚀</i> Projects</div>
+      <div class="project-card">
+        <a href="https://github.com/psaicharan921/aws-learning-portfolio" class="project-title" target="_blank">☁️ AWS Learning Portfolio</a>
+        <div class="project-desc">
+          A curated set of hands-on AWS labs and Terraform modules demonstrating best practices in cloud architecture, security, and automation.
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="https://github.com/psaicharan921/evi-rescue-robot" class="project-title" target="_blank">🤖 EVI – Rescue Assisting Robot</a>
+        <div class="project-desc">
+          Autonomous robot for disaster scenarios using SLAM, AMCL, path planning, ROS integration, and real-time obstacle avoidance.
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="https://github.com/psaicharan921/ai-mobile-robot" class="project-title" target="_blank">🎯 AI-Based Multifunctional Robot Simulation</a>
+        <div class="project-desc">
+          End-to-end simulation of self-driving car and leader-follower robotics using CNNs in Webots and Udacity platform.
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="https://github.com/psaicharan921/vision-sorting-system" class="project-title" target="_blank">🏭 Vision-Based Industrial Sorting Arm</a>
+        <div class="project-desc">
+          ROS-powered Kinova JACO2 sorting system integrating 2D vision, object detection, and motion planning.
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="https://github.com/psaicharan921/flipper-zero-security" class="project-title" target="_blank">🔐 Flipper Zero Wireless Security</a>
+        <div class="project-desc">
+          Wireless pentesting suite for NFC, RFID, Bluetooth, Sub-GHz using Flipper Zero with documented attack/mitigation workflows.
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="https://github.com/psaicharan921/pi-industrial-automation" class="project-title" target="_blank">📡 Raspberry Pi Industrial Automation</a>
+        <div class="project-desc">
+          Edge automation with Raspberry Pi: secure SSH, MQTT/FTP, mini-NAS, PLC GPIO interfacing, and real-time sensor data pipelines.
+        </div>
+      </div>
+    </section>
+
+    <section id="certs">
+      <div class="section-title"><i>📜</i> Certifications</div>
+      <ul class="certs-list">
+        <li>AWS Cloud Technical Essentials</li>
+        <li>Generative AI</li>
+        <li>AI For Everyone</li>
+        <li>AI Engineer</li>
+        <li>AWS Boot-Camp</li>
+        <li>Internet Security: A Hands-on Approach (In Progress)</li>
+        <li>AWS Solutions Architect Associate (In Progress)</li>
+        <li>AWS Certified Cloud Practitioner (In Progress)</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <div class="section-title"><i>🎓</i> Education</div>
+      <div class="edu-card">
+        <div class="edu-title">Master of Science in Information Systems</div>
+        <div class="edu-meta">Cleveland State University | Aug 2022 – May 2024</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-title">Bachelor of Technology in Mechatronics</div>
+        <div class="edu-meta">Hindustan Institute of Technology & Science | Jun 2017 – Apr 2021</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
